@@ -10,11 +10,23 @@ import static io.vavr.control.Option.some;
 public class FizzBuzz {
     public static final int MIN = 1;
     public static final int MAX = 100;
-    private static final Map<Integer, String> mapping = LinkedHashMap.of(
-            15, "FizzBuzz",
-            3, "Fizz",
-            5, "Buzz"
-    );
+
+    private static final Map<Integer, String> mapping =
+            LinkedHashMap.of(
+                    77, "WhizzBang",
+                    55, "BuzzBang",
+                    35, "BuzzWhizz",
+                    33, "FizzBang",
+                    21, "FizzWhizz",
+                    11, "Bang",
+                    7, "Whizz"
+            ).merge(
+                    LinkedHashMap.of(
+                            15, "FizzBuzz",
+                            3, "Fizz",
+                            5, "Buzz"
+                    )
+            );
 
     public static Option<String> convert(int input) {
         return isOutOfRange(input)

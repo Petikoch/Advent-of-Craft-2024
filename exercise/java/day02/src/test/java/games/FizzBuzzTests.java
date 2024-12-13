@@ -18,7 +18,7 @@ import static io.vavr.test.Property.def;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class FizzBuzzTests {
-    private static final Seq<String> fizzBuzzStrings = List("Fizz", "Buzz", "FizzBuzz");
+    private static final Seq<String> fizzBuzzStrings = List("Fizz", "Buzz", "Whizz", "Bang", "FizzBuzz", "FizzWhizz", "BuzzWhizz", "FizzBang", "BuzzBang", "WhizzBang");
 
     public static Stream<Arguments> validInputs() {
         return Stream.of(
@@ -26,14 +26,25 @@ class FizzBuzzTests {
                 Arguments.of(67, "67"),
                 Arguments.of(82, "82"),
                 Arguments.of(3, "Fizz"),
-                Arguments.of(66, "Fizz"),
-                Arguments.of(99, "Fizz"),
                 Arguments.of(5, "Buzz"),
                 Arguments.of(50, "Buzz"),
                 Arguments.of(85, "Buzz"),
                 Arguments.of(15, "FizzBuzz"),
                 Arguments.of(30, "FizzBuzz"),
-                Arguments.of(45, "FizzBuzz")
+                Arguments.of(45, "FizzBuzz"),
+                Arguments.of(7, "Whizz"),
+                Arguments.of(14, "Whizz"),
+                Arguments.of(21, "FizzWhizz"),
+                Arguments.of(42, "FizzWhizz"),
+                Arguments.of(84, "FizzWhizz"),
+                Arguments.of(35, "BuzzWhizz"),
+                Arguments.of(70, "BuzzWhizz"),
+                Arguments.of(11, "Bang"),
+                Arguments.of(22, "Bang"),
+                Arguments.of(33, "FizzBang"),
+                Arguments.of(66, "FizzBang"),
+                Arguments.of(55, "BuzzBang"),
+                Arguments.of(77, "WhizzBang")
         );
     }
 
