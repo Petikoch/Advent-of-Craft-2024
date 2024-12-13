@@ -1,5 +1,6 @@
 package preparation;
 
+import com.github.javafaker.Faker;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -8,6 +9,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class SantaWorkshopServiceTest {
     private static final String RECOMMENDED_AGE = "recommendedAge";
+    private final Faker faker = new Faker();
     private SantaWorkshopService service;
 
     @BeforeEach
@@ -17,24 +19,14 @@ class SantaWorkshopServiceTest {
 
     @Test
     void prepareGiftWithValidToyShouldInstantiateIt() {
-        var giftName = "Bitzee";
-        double weight = 3;
-        var color = "Purple";
-        var material = "Plastic";
-
-        var gift = service.prepareGift(giftName, weight, color, material);
+        var gift = prepareGiftFor(aValidWeight());
 
         assertThat(gift).isNotNull();
     }
 
     @Test
     void retrieveAttributeOnGift() {
-        var giftName = "Furby";
-        double weight = 1;
-        var color = "Multi";
-        var material = "Cotton";
-
-        var gift = service.prepareGift(giftName, weight, color, material);
+        var gift = prepareGiftFor(aValidWeight());
         gift.addAttribute(RECOMMENDED_AGE, "3");
 
         assertThat(gift.getRecommendedAge())
@@ -43,13 +35,20 @@ class SantaWorkshopServiceTest {
 
     @Test
     void failsForATooHeavyGift() {
-        var giftName = "Dog-E";
-        double weight = 6;
-        var color = "White";
-        var material = "Metal";
-
-        assertThatThrownBy(() -> service.prepareGift(giftName, weight, color, material))
+        assertThatThrownBy(() -> prepareGiftFor(6))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("Gift is too heavy for Santa's sleigh");
+    }
+
+    private Gift prepareGiftFor(double weight) {
+        var giftName = faker.commerce().productName();
+        var color = faker.color().name();
+        var material = faker.options().option("Plastic", "Wood", "Metal");
+
+        return service.prepareGift(giftName, weight, color, material);
+    }
+
+    private double aValidWeight() {
+        return faker.number().randomDouble(3, 0, 5);
     }
 }
