@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.advent-of-craft</groupId>
-    <artifactId>morning-routine</artifactId>
+    <artifactId>day04-morning-routine</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <properties>
