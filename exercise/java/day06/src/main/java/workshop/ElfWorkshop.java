@@ -4,14 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ElfWorkshop {
-    private List<String> taskList;
+    private List<String> taskList; // primitive obsession
 
     public ElfWorkshop() {
         this.taskList = new ArrayList<>();
     }
 
     public List<String> getTaskList() {
-        return taskList;
+        return taskList; // better return a copy of the list or an unmodifiable wrapper
     }
 
     public void addTask(String task) {
@@ -20,7 +20,7 @@ public class ElfWorkshop {
         }
     }
 
-    public String completeTask() {
+    public String completeTask() { // signature?
         if (!taskList.isEmpty()) {
             return taskList.remove(0);
         }

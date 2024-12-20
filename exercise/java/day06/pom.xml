@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.advent-of-craft</groupId>
-    <artifactId>elf-workshop</artifactId>
+    <artifactId>day06-elf-workshop</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <properties>
