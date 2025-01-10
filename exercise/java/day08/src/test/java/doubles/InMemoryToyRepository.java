@@ -5,17 +5,16 @@ import domain.ToyRepository;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
+import java.util.Optional;
 
 public class InMemoryToyRepository implements ToyRepository {
     private final List<Toy> toys = new ArrayList<>();
 
     @Override
-    public Toy findByName(String name) {
+    public Optional<Toy> findByName(String name) {
         return toys.stream()
                 .filter(t -> t.getName().equals(name))
-                .findFirst()
-                .orElse(null);
+                .findFirst();
     }
 
     @Override

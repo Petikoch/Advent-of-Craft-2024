@@ -8,9 +8,9 @@ public class Toy {
     private final String name;
     private State state;
 
-    public Toy(String name, State state) {
+    public Toy(String name) {
         this.name = name;
-        this.state = state;
+        this.state = State.UNASSIGNED;
     }
 
     public String getName() {
@@ -21,7 +21,8 @@ public class Toy {
         return state;
     }
 
-    public void setState(State state) {
-        this.state = state;
+    public void assignToElf() {
+        if (state == State.UNASSIGNED)
+            this.state = State.IN_PRODUCTION;
     }
 }

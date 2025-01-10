@@ -1,6 +1,8 @@
 package domain;
 
+import java.util.Optional;
+
 public interface ToyRepository {
-    Toy findByName(String name);
+    Optional<Toy> findByName(String name);
     void save(Toy toy);
 }
